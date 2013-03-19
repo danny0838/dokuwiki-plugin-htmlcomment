@@ -4,6 +4,7 @@
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Christopher Arndt <chris@chrisarndt.de>
+ *             Danny Lin         <danny0838@gmail.com>
  */
 
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
@@ -16,17 +17,12 @@ require_once(DOKU_PLUGIN.'syntax.php');
  */
 class syntax_plugin_htmlcomment extends DokuWiki_Syntax_Plugin {
 
-    function getType() {
-        return 'substition';
-    }
+    function getType() { return 'substition'; }
 
-    function getSort() {
-        return 325;
-    }
+    function getSort() { return 325; }
 
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern("<\!--.*?-->", $mode,
-          'plugin_htmlcomment');
+        $this->Lexer->addSpecialPattern("<\!--.*?-->", $mode, 'plugin_htmlcomment');
     }
 
     function handle($match, $state, $pos, &$handler) {
