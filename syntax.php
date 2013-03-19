@@ -10,8 +10,6 @@ if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../')
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
-define('HTMLCOMMENT_SAFE', true);
-
 /**
  * All DokuWiki plugins to extend the parser/rendering mechanism
  * need to inherit from this class
@@ -44,13 +42,7 @@ class syntax_plugin_htmlcomment extends DokuWiki_Syntax_Plugin {
         if ($mode == 'xhtml') {
             list($state, $match) = $data;
             if ($state == DOKU_LEXER_SPECIAL) {
-                $renderer->doc .= '<!--';
-                if (HTMLCOMMENT_SAFE) {
-                    $renderer->doc .= $renderer->_xmlEntities($match);
-                } else {
-                    $renderer->doc .= $match;
-                }
-                $renderer->doc .= '-->';
+                $renderer->doc .= '<!--'.$match.'-->';
             }
             return true;
         }
