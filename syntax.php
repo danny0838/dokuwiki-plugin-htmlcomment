@@ -18,20 +18,6 @@ define('HTMLCOMMENT_SAFE', true);
  */
 class syntax_plugin_htmlcomment extends DokuWiki_Syntax_Plugin {
 
-    /**
-     * return some info
-     */
-    function getInfo(){
-        return array(
-            'author' => 'Christopher Arndt',
-            'email'  => 'chris@chrisarndt.de',
-            'date'   => '2005-10-08',
-            'name'   => 'HTML Comment Plugin',
-            'desc'   => 'allows HTML comments to be retained in the output',
-            'url'    => 'http://wiki.splitbrain.org/plugin:html_comment',
-        );
-    }
-
     function getType() {
         return 'substition';
     }
