@@ -25,7 +25,7 @@ class syntax_plugin_htmlcomment extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern("<\!--.*?-->", $mode, 'plugin_htmlcomment');
     }
 
-    function handle($match, $state, $pos, &$handler) {
+    function handle($match, $state, $pos, Doku_Handler $handler) {
         if ($state == DOKU_LEXER_SPECIAL) {
              // strip <!-- from start and --> from end
             $match = substr($match,4,-3);
@@ -34,7 +34,7 @@ class syntax_plugin_htmlcomment extends DokuWiki_Syntax_Plugin {
         return array();
     }
 
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
         if ($mode == 'xhtml') {
             list($state, $match) = $data;
             if ($state == DOKU_LEXER_SPECIAL) {
